@@ -1,16 +1,71 @@
 extends layout
 
 block content
-  h1= title
-  p LocalLibrary へようこそ。これは、Mozilla Developer Network のチュートリアル例として開発された、非常に基本的なウェブサイトです。
+  style.
+    .library-container {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 32px 24px;
+      background: #f9f9fb;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      font-family: 'Segoe UI', 'Hiragino Sans', Arial, sans-serif;
+    }
+    .library-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #3a3a5a;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .library-desc {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .library-section-title {
+      font-size: 1.4rem;
+      color: #4a4a7a;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .library-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .library-list li {
+      background: #fff;
+      margin-bottom: 12px;
+      padding: 16px 20px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(60,60,100,0.06);
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .library-list strong {
+      color: #5a5ad1;
+      margin-right: 8px;
+      min-width: 110px;
+      display: inline-block;
+    }
 
-  h1 コンテンツ
+  .library-container
+    h1.library-title= title
+    p.library-desc LocalLibrary へようこそ。これは、Mozilla Developer Network のチュートリアル例として開発された、非常に基本的なウェブサイトです。
 
-  p 図書館には以下のそれぞれの数のコンテンツがあります
+    h2.library-section-title コンテンツ
 
-  ul
-    li #[strong 書籍:] !{book_count}
-    li #[strong コピー:] !{book_instance_count}
-    li #[strong コピー入手可能:] !{book_instance_available_count}
-    li #[strong 著者:] !{author_count}
-    li #[strong ジャンル:] !{genre_count}
+    p 図書館には以下のそれぞれの数のコンテンツがあります
+
+    ul.library-list
+      li #[strong 書籍:] !{book_count}
+      li #[strong コピー:] !{book_instance_count}
+      li #[strong コピー入手可能:] !{book_instance_available_count}
+      li #[strong 著者:] !{author_count}
+      li #[strong ジャンル:] !{genre_count}
