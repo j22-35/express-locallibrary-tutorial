@@ -1,6 +1,7 @@
 doctype html
 html(lang='en')
   head
+    block head
     title= title
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -10,33 +11,48 @@ html(lang='en')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.mb-4
-      a.navbar-brand(href='/catalog') ローカルライブラリ
+      a.navbar-brand.font-weight-bold(href='/catalog') 📚 ローカルライブラリ
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNav', aria-controls='navbarNav', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarNav
+        ul.navbar-nav.ml-auto
+          li.nav-item
+            a.nav-link(href='/catalog') ホーム
+          li.nav-item
+            a.nav-link(href='/catalog/books') 書籍一覧
+          li.nav-item
+            a.nav-link(href='/catalog/authors') 著者一覧
+          li.nav-item
+            a.nav-link(href='/catalog/genres') ジャンル一覧
+          li.nav-item
+            a.nav-link(href='/catalog/bookinstances') 書籍インスタンス一覧
 
     .container-fluid
       .row
-        .col-md-3.col-lg-2.bg-light.pt-3.pb-3.min-vh-100
+        .col-md-3.col-lg-2.d-none.d-md-block.bg-light.sidebar.pt-4.pb-4(style="min-height: 100vh;")
           block sidebar
-            ul.list-group
-              li.list-group-item
-                a(href='/catalog') ホーム
-              li.list-group-item
-                a(href='/catalog/books') 書籍一覧
-              li.list-group-item
-                a(href='/catalog/authors') 著者一覧
-              li.list-group-item
-                a(href='/catalog/genres') ジャンル一覧
-              li.list-group-item
-                a(href='/catalog/bookinstances') 書籍インスタンス一覧
-              li.list-group-item
-                hr
-              li.list-group-item
-                a(href='/catalog/author/create') 著者の追加
-              li.list-group-item
-                a(href='/catalog/genre/create') ジャンルの追加
-              li.list-group-item
-                a(href='/catalog/book/create') 書籍の追加
-              li.list-group-item
-                a(href='/catalog/bookinstance/create') 書籍インスタンスの追加
+          h5.text-primary.font-weight-bold.mb-3 サイドメニュー
+          ul.list-group.list-group-flush
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/author/create', class='text-success font-weight-bold') + 著者の追加
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/genre/create', class='text-success font-weight-bold') + ジャンルの追加
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/book/create', class='text-success font-weight-bold') + 書籍の追加
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/bookinstance/create', class='text-success font-weight-bold') + 書籍インスタンスの追加
+            li.list-group-item.border-0.bg-transparent.mt-3
+              hr
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog', class='text-dark') ホーム
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/books', class='text-dark') 書籍一覧
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/authors', class='text-dark') 著者一覧
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/genres', class='text-dark') ジャンル一覧
+            li.list-group-item.border-0.bg-transparent
+              a(href='/catalog/bookinstances', class='text-dark') 書籍インスタンス一覧
 
-        .col-md-9.col-lg-10.pt-3
+        .col-md-9.col-lg-10.pt-4.pb-4.bg-white(style="min-height: 100vh;")
           block content

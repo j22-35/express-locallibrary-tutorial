@@ -7,15 +7,19 @@ block content
     ul
       each val in bookinstance_list
         li
-          a(href=val.url) #{val.book.title} : #{val.imprint} -&nbsp;
+          if val.book
+            a(href=val.url) #{val.book.title} : #{val.imprint} -&nbsp;
+          else
+            a(href=val.url) [不明な書籍] : #{val.imprint} -&nbsp;
           if val.status=='Available'
             span.text-success 利用可能
           else if val.status=='Maintenance'
-            span.text-danger メンテナンス中
-          else
+            span.text-warning メンテナンス中
+          else if val.status=='Loaned'
             span.text-warning 貸出中
+          else
+            span.text-muted #{val.status}
           if val.status!='Available'
             span  (返却期限: #{val.due_back_formatted})
-
   else
     p この図書館には蔵書がありません。
